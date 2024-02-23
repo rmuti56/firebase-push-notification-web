@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <div>test</div>
+      <h3>Test push notification</h3>
     </>
   );
 }

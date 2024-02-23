@@ -9,16 +9,18 @@ interface MessageProps {
 const Message = ({ notification }: MessageProps) => {
   return (
     <>
-      <div id="notificationHeader">
-        {/* image is optional */}
+      <div className="notification-container">
         {notification?.imageUrl && (
-          <div id="imageContainer">
+          <div className="image-container">
             <img src={notification.imageUrl} width={100} />
           </div>
         )}
-        <span>{notification?.title}</span>
+        <div className="notification-content">
+          <span className="notification-title">{notification?.title}</span>
+          <hr />
+          <p className="notification-body">{notification?.body}</p>
+        </div>
       </div>
-      <div id="notificationBody">{notification?.body}</div>
     </>
   );
 };
