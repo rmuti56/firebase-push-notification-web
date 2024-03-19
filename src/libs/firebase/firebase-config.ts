@@ -1,4 +1,11 @@
 import { initializeApp } from "firebase/app";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  FacebookAuthProvider,
+  OAuthProvider,
+} from "firebase/auth";
 
 import { getMessaging } from "firebase/messaging";
 
@@ -18,3 +25,21 @@ const app = initializeApp(firebaseConfig);
 
 // Messaging service
 export const messaging = getMessaging(app);
+
+// Initialize Firebase Auth provider
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+const appleProvider = new OAuthProvider("apple.com");
+appleProvider.addScope('email');
+appleProvider.addScope('name');
+
+// whenever a user interacts with the provider, we force them to select an account
+googleProvider.setCustomParameters({
+  prompt: "select_account ",
+});
+export const auth = getAuth(app);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
+export const signInWithFacebookPopup = () =>
+  signInWithPopup(auth, facebookProvider);
+export const signInWithApplePopup = () => signInWithPopup(auth, appleProvider);

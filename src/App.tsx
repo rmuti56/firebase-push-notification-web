@@ -5,6 +5,7 @@ import { messaging } from "./libs/firebase/firebase-config";
 import Message from "./components/Message";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import SignIn from "./components/SignIn";
 
 const { VITE_APP_VAPID_KEY } = import.meta.env;
 
@@ -38,6 +39,7 @@ function App() {
     <>
       <ToastContainer />
       <h3>Test push notification</h3>
+      <SignIn />
     </>
   );
 }
